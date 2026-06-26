@@ -37,12 +37,7 @@ import java.util.ArrayList;
                             System.out.print("Primeiramente digite o seu nome:");
                             nome = scanner.nextLine();
 
-                            if (nome.isBlank()) {
-                                System.out.println("Nome inválido!");
-                            }
-                            else {
-                                nomeUser = true;
-                            }
+                            nomeUser = Validador.validarNome(nome);
 
                         }
 
@@ -53,12 +48,7 @@ import java.util.ArrayList;
                             System.out.print("Seu e-mail:");
                             email = scanner.nextLine();
 
-                            if (!email.contains("@")) {
-                                System.out.println("E-mail inválido!");
-                            }
-                            else {
-                                emailUser = true;
-                            }
+                            emailUser = Validador.validarEmail(email);
                         }
 
                         boolean idadeUser = false;
@@ -69,12 +59,7 @@ import java.util.ArrayList;
                             idade = scanner.nextInt();
                             scanner.nextLine();
 
-                            if (idade <= 0) {
-                                System.out.println("Idade Inválida!");
-                            }
-                            else {
-                                idadeUser = true;
-                            }
+                            idadeUser = Validador.validarIdade(idade);
 
                         }
 
