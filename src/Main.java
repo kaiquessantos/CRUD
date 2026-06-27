@@ -112,21 +112,18 @@ import java.util.ArrayList;
                                         else {
 
                                             boolean trocaNome = false;
+                                            String nomeNovo = null;
                                             while (!trocaNome) {
-                                                String nomeNovo = null;
+
                                                 System.out.print("Digite sua alteração:");
                                                 nomeNovo = scanner.nextLine();
-                                                if (nomeNovo.isEmpty()) {
-                                                    System.out.println("Nome Inválido!");
-                                                }
-                                                else {
-                                                    usuarioEncontrado.setNome(nomeNovo);
-                                                    System.out.println("Alteração bem sucedida!");
-                                                    update = true;
-                                                    trocaNome = true;
-                                                }
+
+                                                trocaNome = Validador.validarNome(nomeNovo);
 
                                             }
+                                            usuarioEncontrado.setNome(nomeNovo);
+                                            System.out.println("Alteração bem sucedida!");
+                                            update = true;
                                         }
 
                                 break;
@@ -139,22 +136,18 @@ import java.util.ArrayList;
                                 usuarioEncontrado = User.buscaPorId(usuarios, buscaID);
 
                                         boolean trocaEmail = false;
+                                        String emailNovo = null;
                                         while (!trocaEmail) {
 
-                                            String emailNovo = null;
                                             System.out.print("Digite sua alteração:");
                                             emailNovo = scanner.nextLine();
-                                            if (!emailNovo.contains("@")) {
-                                                System.out.println("E-mail inválido!");
-                                            }
-                                            else {
-                                                usuarioEncontrado.setEmail(emailNovo);
-                                                System.out.println("Alteração bem sucedida!");
-                                                update = true;
-                                                trocaEmail = true;
-                                            }
+
+                                            trocaEmail = Validador.validarEmail(emailNovo);
 
                                         }
+                                        usuarioEncontrado.setEmail(emailNovo);
+                                        System.out.println("Alteração bem sucedida!");
+                                        update = true;
 
                                 break;
 
@@ -166,23 +159,18 @@ import java.util.ArrayList;
                                 usuarioEncontrado = User.buscaPorId(usuarios, buscaID);
 
                                         boolean trocaIdade = false;
+                                        int idadeNova = 0;
                                         while (!trocaIdade) {
 
-                                            int idadeNova = 0;
                                             System.out.print("Digite sua alteração:");
                                             idadeNova = scanner.nextInt();
-                                            scanner.nextLine();
-                                            if (idadeNova <= 0) {
-                                                System.out.println("Idade Inválida!");
-                                            }
-                                            else {
-                                                usuarioEncontrado.setIdade(idadeNova);
-                                                System.out.println("Alteração bem sucedida!");
-                                                update = true;
-                                                trocaIdade = true;
-                                            }
+
+                                            trocaIdade = Validador.validarIdade(idadeNova);
 
                                         }
+                                        usuarioEncontrado.setIdade(idadeNova);
+                                        System.out.println("Alteração bem sucedida!");
+                                        update = true;
 
                                 break;
 
