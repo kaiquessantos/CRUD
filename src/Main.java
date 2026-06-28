@@ -5,6 +5,7 @@ import java.util.ArrayList;
 
 
         ArrayList<User> usuarios = new ArrayList<>();
+        Service service = new Service(usuarios);
         User usuarioEncontrado = null;
         int buscaID = 0;
 
@@ -28,44 +29,25 @@ import java.util.ArrayList;
                 //Create
                 case 1:
 
-                        System.out.println("Para começar, vamos criar o seu Usuário!");
+                        boolean create = false;
+                        while (!create) {
+                            String nome = null;
+                            String email = null;
+                            int idade = 0;
 
-                        boolean nomeUser = false;
-                        String nome = null;
-
-                        while (!nomeUser) {
-                            System.out.print("Primeiramente digite o seu nome:");
+                            System.out.println("Para começar, vamos criar o seu Usuário!");
+                            System.out.print("Digite seu nome:");
                             nome = scanner.nextLine();
-
-                            nomeUser = Validador.validarNome(nome);
-
-                        }
-
-                        boolean emailUser = false;
-                        String email = null;
-
-                        while (!emailUser) {
-                            System.out.print("Seu e-mail:");
+                            System.out.print("Digite seu e-mail:");
                             email = scanner.nextLine();
-
-                            emailUser = Validador.validarEmail(email);
-                        }
-
-                        boolean idadeUser = false;
-                        int idade = 0;
-
-                        while (!idadeUser) {
-                            System.out.print("Sua idade:");
+                            System.out.print("Digite sua idade:");
                             idade = scanner.nextInt();
                             scanner.nextLine();
-
-                            idadeUser = Validador.validarIdade(idade);
+                            User novoUsuario = new User(nome,email,idade);
+                            create = service.create(novoUsuario);
 
                         }
-
-                        User novoUsuario = new User(nome,email,idade);
-                        usuarios.add(novoUsuario);
-
+                        
                     break;
 
                 //Read
